@@ -1,0 +1,33 @@
+class Movie:
+    def __init__(self, name, seats):
+        self.name = name
+        self.available_seats = seats
+
+    def book_seat(self, count):
+        if count <= self.available_seats:
+            self.available_seats -= count
+            return True
+        return False
+
+
+class Ticket:
+    def __init__(self, movie_name, seats_booked):
+        self.movie_name = movie_name
+        self.seats_booked = seats_booked
+
+    def generate_ticket(self):
+        print("\n----- Ticket -----")
+        print("Movie:", self.movie_name)
+        print("Seats Booked:", self.seats_booked)
+        print("------------------")
+
+
+# -------- Usage --------
+movie = Movie("Inception", 50)
+
+seats = int(input("Enter number of seats to book: "))
+if movie.book_seat(seats):
+    ticket = Ticket(movie.name, seats)
+    ticket.generate_ticket()
+else:
+    print("Not enough seats available.")
